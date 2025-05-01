@@ -45,5 +45,11 @@ jobs:
       run: tox
     - name: Install build tools
       run: |
-        sudo apt-get
+        sudo apt-get update
         sudo apt-get install -y build-essential python3-dev
+    - name: Install build tools (Windows only)
+      if: runner.os == 'Windows'
+      run: |
+        choco install python3 --yes  # Install Python if not already installed
+        choco install visualcpp-build-tools --yes  # Install Visual C++ Build Tools
+        python -m pip install --upgrade setuptools wheel  # Install necessary Python build tools
