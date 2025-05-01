@@ -34,11 +34,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest tox tox-gh-actions
         pip install -r requirements_dev.txt
-    -name: Install tox
-    run: pip install -r requirements_dev.txt
-    -name: Run tox
-    run: tox
-    -name: Run tests
-    run: pytest -v tests/unit --tb=short
-    -name: Test with tox
-    run: tox
+    - name: Install tox
+      run: pip install -r requirements_dev.txt
+    
+    - name: Run tox
+      run: tox
+    - name: Run tests
+      run: pytest -v tests/unit --tb=short
+    - name: Test with tox
+      run: tox
