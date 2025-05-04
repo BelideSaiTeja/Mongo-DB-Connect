@@ -1,6 +1,14 @@
 from typing import Any
 import os
 import pandas as pd
+import pymongo
+import json
+from ensure import ensure_annotations
+
+
+from typing import Any
+import os
+import pandas as pd
 from pymongo.mongo_client import MongoClient
 import json
 from ensure import ensure_annotations
@@ -42,7 +50,7 @@ class mongo_operation:
         if type(record) == list:
             for data in record:
                 if type(data) != dict:
-                    raise TypeError("record must be in the dict")    
+                    raise TypeError("record must be in the format of dict")    
             collection=self.create_collection(collection_name)
             collection.insert_many(record)
         elif type(record)==dict:
